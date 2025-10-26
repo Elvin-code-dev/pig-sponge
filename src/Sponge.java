@@ -1,19 +1,22 @@
 public class Sponge {
 
   /*
-   * Create a method "spongeCase" that takes a string consisting of one or more words 
-   * separated by spaces. It should return a new string converted to "sponge 
-   * case," where each word starts with a lowercase letter, and then alternates 
+   * Create a method "spongeCase" that takes a string consisting of one or more
+   * words
+   * separated by spaces. It should return a new string converted to "sponge
+   * case," where each word starts with a lowercase letter, and then alternates
    * between upper and lower case for each following letter in the word.
    *
    * Examples:
    *
-   * spongeCase("spongebob")  should return "sPoNgEbOb"
-   * spongeCase("Who are YOU calling A Pinhead")  should return "wHo aRe yOu cAlLiNg a pInHeAd"
-   * spongeCase("WHAT is UP my dude")  should return "wHaT iS uP mY dUdE"
-   * spongeCase("debí tirar más fotos") should return dEbÍ tIrAr mÁs fOtOs" (note the accents)
-   * spongeCase("E")  should return "e"
-   * spongeCase("e")  should return "e"
+   * spongeCase("spongebob") should return "sPoNgEbOb"
+   * spongeCase("Who are YOU calling A Pinhead") should return
+   * "wHo aRe yOu cAlLiNg a pInHeAd"
+   * spongeCase("WHAT is UP my dude") should return "wHaT iS uP mY dUdE"
+   * spongeCase("debí tirar más fotos") should return dEbÍ tIrAr mÁs fOtOs" (note
+   * the accents)
+   * spongeCase("E") should return "e"
+   * spongeCase("e") should return "e"
    * 
    * Hints:
    * There exist the following methods in java:
@@ -33,9 +36,37 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
-  }
+    // spilt the sentcnce into each word by using a space
+    String[] words = sentence.split(" ");
+    // store are answer
+    String result = "";
 
+    // go through each word in the sentence
+    for (String word : words) {
+      // this will hold the changed version of the word
+      String newWord = "";
+
+      // go through each letter in the word
+      for (int i = 0; i < word.length(); i++) {
+        // get the letter at postion i
+        char c = word.charAt(i);
+
+        // if i is even > lowercase if odd > uppercase
+        if (i % 2 == 0) {
+          newWord += Character.toLowerCase(c);
+        } else {
+          newWord += Character.toUpperCase(c);
+        }
+
+      }
+      // adding this word and a space to the final result
+      result += newWord + " ";
+
+    }
+
+    // Removeing the extra space at the end
+    return result.trim();
+  }
 
   // Method to help with testing, you do not need to read this.
   public static void assertEqual(int testNumber, String actual, String expected) {
